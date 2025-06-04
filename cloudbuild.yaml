@@ -10,21 +10,7 @@ steps:
     args: ["push", "gcr.io/$PROJECT_ID/tcc-be"]
 
   # Melakukan deploy ke cloud run menggunakan image yg telah di-upload/push pada langkah sebelumnya
-  # Pada bagian ini, dijalankan perintah sebagai berikut.
-  # "gcloud run deploy tcc-be \
-  #       --image 'gcr.io/$PROJECT_ID/tcc-be \
-  #       --timeout 1000s \
-  #       --port 5000 \
-  #       --region us-central1 \
-  #       --allow-unauthenticated' \
-  #
-  # Keterangan:
-  # "gcloud run deploy be": Perintah yang digunakan untuk mendeploy service ke cloud run dengan nama "be"
-  # "--image 'gcr.io/$PROJECT_ID/tcc-be'": Image yang akan di-deploy
-  # "--timeout 1000s": Mengatur waktu maksimum loading menjadi 1000s
-  # "--port 5000": Mengatur port yang akan digunakan (disamakan dengan port yg di-listen oleh server)
-  # "--region us-central1": Memilih us-central1 sebagai region yg akan digunakan pada cloud run
-  # "--allow-unauthenticated": Agar BE dapat diakses di mana saja tanpa memerlukan autentikasi
+  # Removed --port flag as Cloud Run will auto-detect from EXPOSE in Dockerfile
   - name: "gcr.io/cloud-builders/gcloud"
     args:
       [
@@ -35,8 +21,6 @@ steps:
         "gcr.io/$PROJECT_ID/tcc-be",
         "--timeout",
         "1000s",
-        "--port",
-        "5000",
         "--region",
         "us-central1",
         "--allow-unauthenticated",

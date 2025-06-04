@@ -1,0 +1,25 @@
+GET http://localhost:3000/notes
+
+###
+
+POST http://localhost:3000/create
+Content-Type: application/json
+
+{
+    "note": "gk penting",
+    "category": "random"
+}
+
+###
+
+PUT http://localhost:3000/update/1
+Content-Type: application/json
+
+{
+    "note": "fufufafa gemoy sialan",
+    "category": "sensitive"
+}
+
+###
+
+DELETE http://localhost:3000/delete/2

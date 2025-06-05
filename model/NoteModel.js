@@ -10,6 +10,6 @@ const Note = db.define("note", {
   },
 });
 
-db.sync().then(() => console.log("db synced"));
+db.sync().then(() => console.log("note synced"));
 
 export default Note;
